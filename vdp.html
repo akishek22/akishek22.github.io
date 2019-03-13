@@ -7,9 +7,9 @@
 {
 	"@context": "https://schema.org",
 	"@type": "Vehicle",
-	"@id": "def321",
+	"@id": "123456",
 	"vehicleIdentificationNumber": "WB10594016ZN55474",
-	"name": "2015 Honda Camry",
+	"name": "2015 Ford Camry",
 	"description": "test smart pixel",
 	"bodyType": "Sedan",
 	"mileageFromOdometer": {
@@ -88,6 +88,9 @@
   'https://connect.facebook.net/en_US/fbevents.js');
   fbq('init', '112363519486016');
   fbq('track', 'PageView');
+  fbq('track', 'ViewContent', {
+    'content_ids': ['123456']
+  });
 </script>
 <noscript><img height="1" width="1" style="display:none"
   src="https://www.facebook.com/tr?id=112363519486016&ev=PageView&noscript=1"
