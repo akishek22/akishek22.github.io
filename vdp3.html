@@ -1,0 +1,131 @@
+<html><head>
+
+<meta charset="UTF-8">
+<title>vdp</title>
+<script>
+  var fbVDP = {
+    'id': 'abc',
+    'description': 'A brand new 2015 Ford Fusion.',
+    'url': 'http://' + window.location.hostname,
+    'name': '2015 Ford Fusion',
+    'bodyType': 'Convertible',
+    'mileageUnitType': 'MI',
+    'mileageValue': 1234,
+    'price': '12341',
+    'dealerName': 'Dealer 123',
+    'dealerPhone': '(831) 920-0630',
+    'streetAddress': '4 Geary Plaza',
+    'addressLocality': 'Seaside', // City
+    'addressRegion': 'CA',
+    'addressCountry': 'US',
+    'postalCode': '80209',
+    'condition': 'used',
+    'color': 'White',
+    'image': [
+      {
+        "url": "https://image.com/1.jpg",
+        "keywords": "a,b,c"
+      },
+      {
+        "url": "https://image.com/2.jpg",
+        "keywords": "d"
+      }
+    ],
+    'lat': 52.31,
+    'long': 42.1,
+    'brand': 'Ford',
+    'model': 'Fusion',
+    'year': 1999,
+    'vin': 'abc'
+  }
+
+  var el = document.createElement('script');
+  el.type = 'application/ld+json';
+  el.text = JSON.stringify({
+    "@context": "http://schema.org",
+    "@type": "Vehicle",
+    "@id": fbVDP.id,
+    "vehicleIdentificationNumber": fbVDP.vin,
+    "description": fbVDP.description,
+    "url": fbVDP.url, // OR window.location
+    "name": fbVDP.name,
+    "bodyType": fbVDP.bodyType,
+    "mileageFromOdometer": {"@type": "QuantitativeValue", "unitText": fbVDP.mileageUnitType, "value": fbVDP.mileageValue},
+    "offers":  {
+      "@type": "Offer",
+      "priceCurrency": "USD",
+      "price": fbVDP.price,
+      "seller": {
+        "@type": "Organization",
+        "name": fbVDP.dealerName,
+        "telephone": fbVDP.dealerPhone,
+        "address": {
+          "@type": "PostalAddress",
+          "addressRegion": fbVDP.addressRegion,
+          "addressLocality": fbVDP.addressLocality,
+          "streetAddress": fbVDP.streetAddress,
+          "addressCountry": fbVDP.addressCountry,
+          "postalCode": fbVDP.postalCode
+        }
+      }
+    },
+    "itemCondition": {
+      "@type": "OfferItemCondition",
+      "name": fbVDP.condition
+    },
+    "color": "White",
+    "additionalProperty": [
+      {
+        "@type": "PropertyValue",
+        "propertyID": "latitude",
+        "value": fbVDP.lat
+      },
+      {
+        "@type": "PropertyValue",
+        "propertyID": "longitude",
+        "value": fbVDP.long
+      }
+    ],
+    "image": fbVDP.image,
+    "brand": {"@type": "Brand", "name": fbVDP.brand},
+    "model": fbVDP.model,
+    "vehicleModelDate": fbVDP.year
+  });
+  document.querySelector('body').appendChild(el);
+
+  // BASE PIXEL CODE + VDP FIRE EVENT
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '112363519486016');
+  fbq('track', 'PageView');
+  fbq('track', 'ViewContent', {
+    content_type: 'vehicle', // REQUIRED: DO NOT change this, must be set to 'vehicle'
+    content_ids: [fbVDP.id], // REQUIRED: array of vehicle IDs
+    postal_code: fbVDP.postalCode, // RECOMMENDED
+    country: fbVDP.addressCountry, // RECOMMENDED  don't use abbreviations
+    make: fbVDP.make, // RECOMMENDED
+    model: fbVDP.model, // RECOMMENDED
+    year: fbVDP.year, // RECOMMENDED
+    state_of_vehicle: fbVDP.condition, // RECOMMENDED
+    exterior_color: fbVDP.color, // RECOMMENDED
+    body_style: fbVDP.bodyStyle, // RECOMMENDED
+    price: fbVDP.price, // RECOMMENDED, up to 2 decimals optional
+    currency: 'USD' // REQUIRED if price and preferred_price_range is used
+  });
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=112363519486016&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
+</head>
+
+<body>
+<h1>Alfred's VDP 3 </h1>
+<a href="https://akishek22.github.io/vdp.html">Go To VDP1</a>
+</body></html>
